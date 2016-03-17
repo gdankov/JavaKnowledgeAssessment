@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import database.DatabaseConnector;
 import model.Answer;
 import model.Question;
 import model.QuestionAnswer;
@@ -24,7 +25,7 @@ public class UserSession {
     //get topics from database eventually
     
 
-    private String[] topics = {"Core", "OOP", "Data Structures", "Advanced", "Enterprise"};
+    private String[] topics = {"Core", "OOP", "DS"};
     private Map<String, Integer> topicsScoreboard;
     
     public UserSession(int questionsPerTopic) {
@@ -48,16 +49,33 @@ public class UserSession {
         
         levelScores[level - 1] = 0;
         
-        List<QuestionAnswer> questionsAndAnswers = new ArrayList<>();
+        DatabaseConnector dbC = new DatabaseConnector();
+        
+        List<QuestionAnswer> questionsAndAnswers = dbC.getQuestions(1);
+        List<QuestionAnswer> result = new ArrayList<>();
+        
+        
         for (String topic : topics) {
-            questionsAndAnswers.addAll(getQuestions(topic, level, questionsPerTopic));
+        	List<QuestionAnswer> filtered = filterByTopic(questionsAndAnswers, topic);
+            result.addAll(chooseRandomQuestions(filtered, level));
+          
         }
         
         
-        return questionsAndAnswers;
+        return result;
     }
     
-    private List<QuestionAnswer> chooseRandomQuestions(List<QuestionAnswer> questions, int questionsPerTopic) {
+    private List<QuestionAnswer> filterByTopic(List<QuestionAnswer> questionsAndAnswers, String topic) {
+    	List<QuestionAnswer> filtered = new ArrayList<>();
+    	for (QuestionAnswer questionAnswer : questionsAndAnswers) {
+			if(questionAnswer.getQuestionContent().getTopic().equals(topic)) {
+				filtered.add(questionAnswer);
+			}
+		}
+        return filtered;
+	}
+
+	private List<QuestionAnswer> chooseRandomQuestions(List<QuestionAnswer> questions, int questionsPerTopic) {
         List<QuestionAnswer> randQuestions = new ArrayList<>();
         
         Random rand = new Random();
@@ -69,64 +87,9 @@ public class UserSession {
         
         
         
-        
         return randQuestions;
-    }
-
-    private List<QuestionAnswer> getQuestions(String topic, int level, int questionsPerTopic) {
-        
-        //get questions from database
-        List<QuestionAnswer> questions = init();
-        
-        List<QuestionAnswer> randQuestions = chooseRandomQuestions(questions, questionsPerTopic);
-        return randQuestions;
-    }
-    
-    private List<QuestionAnswer> init() {
-        List<QuestionAnswer> listOfQuestions=new ArrayList<>();
-        
-        Answer answer1 = new Answer(1, "answer 1", false, 0);
-        Answer answer2 = new Answer(2, "answer 2", true, 0);
-        Answer answer3 = new Answer(3, "answer 3", false, 0);
-        
-        List<Answer> answers1 = new ArrayList<>();
-        answers1.add(answer1);
-        answers1.add(answer2);
-        answers1.add(answer3);
-        
-        QuestionAnswer qa1 = new QuestionAnswer(new Question(1, "question 1", "Easy", "OOP"), answers1);
-        
-        listOfQuestions.add(qa1);
-        
-        Answer answer4 = new Answer(4, "answer 4", true, 0);
-        Answer answer5 = new Answer(5, "answer 5", false, 0);
-        Answer answer6 = new Answer(6, "answer 6", false, 0);
-        
-        List<Answer> answers2 = new ArrayList<>();
-        answers2.add(answer4);
-        answers2.add(answer5);
-        answers2.add(answer6);
-        
-        QuestionAnswer qa2 = new QuestionAnswer(new Question(2, "question 2", "Easy", "DS"), answers2);
-        
-        listOfQuestions.add(qa2);
-        
-        Answer answer7 = new Answer(7, "answer 7", false, 0);
-        Answer answer8 = new Answer(8, "answer 8", false, 0);
-        Answer answer9 = new Answer(9, "answer 9", true, 0);
-        
-        List<Answer> answers3 = new ArrayList<>();
-        answers3.add(answer7);
-        answers3.add(answer8);
-        answers3.add(answer9);
-        
-        QuestionAnswer qa3 = new QuestionAnswer(new Question(3, "question 3", "Easy", "Core"), answers3);
-        
-        listOfQuestions.add(qa3);
-       
-        
-        return listOfQuestions;
-    }
+	}
+   
     
     public boolean evaluateResult(List<Integer> results, List<QuestionAnswer> questions, int level) {
         int currentLevelScore = 0;
