@@ -9,13 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.QuestionAnswer;
+
 /**
  * Servlet implementation class Servlet
  */
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	QuestionFactory factory = new QuestionFactory();
+	// QuestionFactory factory = new QuestionFactory();
 	Session session = new Session();
 
 	/**
@@ -77,14 +79,17 @@ public class Servlet extends HttpServlet {
 	public void setQuestion(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Question temp = factory.take();
-		Question temp = session.getQuestion();
+		QuestionAnswer temp = session.getQuestion();
+		String a = temp.getAnswers().get(0).getData();
+		String b = temp.getAnswers().get(1).getData();
+		String c = temp.getAnswers().get(2).getData();
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Question.jsp");
-		request.setAttribute("name", temp.getName());
-		request.setAttribute("ans1", temp.getA());
-		request.setAttribute("ans2", temp.getB());
-		request.setAttribute("ans3", temp.getC());
-		request.setAttribute("ans4", temp.getD());
+		request.setAttribute("name", temp.getQuestionContent().getContent());
+		request.setAttribute("ans1", a);
+		request.setAttribute("ans2", b);
+		request.setAttribute("ans3", c);
+		request.setAttribute("ans4", "sth");
 
 		dispatcher.forward(request, response);
 	}
