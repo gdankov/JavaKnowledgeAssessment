@@ -89,10 +89,7 @@ public class ReadFromDatabase {
 			return listOfQuestions;
 		}
 		
-		public void loadAnswers(List<Question> questions){
-			//Select answer
-			//from answer
-			//where questions id ==answer id
+		public void loadAnswers(){
 			listOfAnswers=new ArrayList<>();
 			listOfAnswers.add(new Answer(1, "Answer1 to Q1", false, 1));
 			listOfAnswers.add(new Answer(2, "Answer2 to Q1", false, 1));

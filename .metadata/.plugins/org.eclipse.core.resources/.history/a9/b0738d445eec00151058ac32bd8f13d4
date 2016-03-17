@@ -1,0 +1,101 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import database.QuestionDAO;
+import database.ReadFromDatabase;
+import model.Question;
+import model.QuestionAnswer;
+
+import model.User;
+
+public class UserSession {
+	//private User user;
+	
+	ReadFromDatabase base=new ReadFromDatabase();
+	private final int REQUIRED_FOR_NEXT_LEVEL;
+	private int questionsPerTopic;
+	
+	private int[] levelScores;
+	private int lastScore;
+	
+	private String[] topics = {"Core", "OOP", "Data Structures", "Algorithms", "Enterprise"};
+	
+	
+	public UserSession(int questionsPerTopic) {
+		this.questionsPerTopic = questionsPerTopic;
+		this.levelScores = new int[3];
+		
+		REQUIRED_FOR_NEXT_LEVEL = Math.round(questionsPerTopic * (75 / 100));
+		
+		
+	}
+	/*
+	public List<QuestionAnswer> setUpLevel(int level) {
+		List<QuestionAnswer> questionsAndAnswers = new ArrayList<>();
+		for (String topic : topics) {
+			questionsAndAnswers.addAll(getQuestions(topic, level, questionsPerTopic));
+		}
+		return questionsAndAnswers;
+	}
+	*/
+	public List<QuestionAnswer> setUpLevel1(String level) {
+		List<Question> questions=base.loadQuestions(level);
+		List<QuestionAnswer> questionsAndAnswers = new ArrayList<>();
+		for (String topic : topics) {
+			questionsAndAnswers.addAll(base.getListOfQuestions(topic));
+		}
+		return questionsAndAnswers;
+	}
+	
+	private List<QuestionAnswer> chooseRandomQuestions(List<QuestionAnswer> questions, int questionsPerTopic) {
+		
+		List<QuestionAnswer> randQuestions = new ArrayList<>();
+		
+		Random rand = new Random();
+		for (int i = 0; i < questionsPerTopic; i++) {
+			int randIndex = rand.nextInt(questions.size());	
+			randQuestions.add(questions.get(randIndex));
+			questions.remove(randIndex);
+		}
+		
+		return randQuestions;
+	}
+
+	private List<QuestionAnswer> getQuestions(String topic, int level, int questionsPerTopic) {
+		QuestionDAO questionDao = new QuestionDAO();
+		
+		List<QuestionAnswer> questions = questionDao.getAllQuestions(topic, level);
+		List<QuestionAnswer> randQuestions = chooseRandomQuestions(questions, questionsPerTopic);
+		return randQuestions;
+	}
+	
+	
+	
+	public boolean evaluateResult(List<Integer> results, List<QuestionAnswer> questions, int level) {
+		int currentLevelScore = 0;
+		
+		int resultCounter = 0;
+		for (QuestionAnswer question : questions) {
+			int answered = results.get(resultCounter);
+			
+			if(question.getAnswers().get(answered).isCorrect()) {
+				++currentLevelScore;
+			}
+			++resultCounter;
+		}
+		
+		levelScores[level - 1] = currentLevelScore;
+		lastScore += currentLevelScore;
+		
+		if(currentLevelScore < REQUIRED_FOR_NEXT_LEVEL) {
+			return false;			
+		}
+		return true;
+	}
+	
+	public int lastScore() {
+		return lastScore;
+	}
+
+}

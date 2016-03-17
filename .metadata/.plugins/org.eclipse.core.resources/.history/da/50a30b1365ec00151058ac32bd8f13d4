@@ -136,7 +136,7 @@ public class UserSession {
             int answered = results.get(resultCounter);
             
             if(question.getAnswers().get(answered).isCorrect()) {
-                incrementTopicScoreboard(question.getQuestion().getTopic());
+                incrementTopicScoreboard(question.getQuestionContent().getTopic());
                 ++currentLevelScore;
             }
             ++resultCounter;
