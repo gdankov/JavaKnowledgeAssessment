@@ -99,7 +99,7 @@ public class UserSession {
             int answered = results.get(resultCounter);
             
             if(question.getAnswers().get(answered).isCorrect()) {
-                incrementTopicScoreboard(question.getQuestionContent().getTopic());
+                incrementTopicScoreboard(question.getQuestion().getTopic());
                 ++currentLevelScore;
             }
             ++resultCounter;
