@@ -65,4 +65,3 @@ public class DatabaseConnector {
 	        return listOfQuestions;
 	}
 }
-

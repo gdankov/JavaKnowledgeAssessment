@@ -10,11 +10,11 @@ import model.QuestionAnswer;
 public class ReadFromDatabase {
 	
 	//not sure if its here 
-	private List <QuestionAnswer> used=new ArrayList<>();	
+	private List <QuestionAnswer> used = new ArrayList<>();	
 	private QuestionAnswer qAns;
 	
-	private List<Question> listOfQuestions;
-	private List<Answer> listOfAnswers;
+	private List<Question> listOfQuestions = new ArrayList<>();
+	private List<Answer> listOfAnswers = new ArrayList<>();
 	
 	//get all question from topic 
 	public  List <QuestionAnswer> getListOfQuestions(String topic){
@@ -28,7 +28,7 @@ public class ReadFromDatabase {
 	
 	//create QuestionAnswer object 
 	public QuestionAnswer createQuestionAnswer(Question q){	
-		QuestionAnswer qa=new QuestionAnswer(q);
+		QuestionAnswer qa = new QuestionAnswer(q);
 		for(Answer ans: listOfAnswers){
 			if(q.getQuestionID()==ans.getQuestionID()){
 				qa.getAnswers().add(ans);
@@ -119,5 +119,4 @@ public class ReadFromDatabase {
 	
 
 }
-
 
