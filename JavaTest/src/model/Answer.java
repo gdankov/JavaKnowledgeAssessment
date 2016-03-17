@@ -3,18 +3,17 @@ package model;
 public class Answer {
 
 	private int id;
-	private String a, b, c;
+	private String content;
 	private boolean isCorrect;
-	private int questionID;
 	
-	public Answer(int id, String a, String b, String c, 
-			      boolean isCorrect, int questionID) {
+	public Answer(int id, String content, boolean isCorrect) {
 		this.id = id;
-		this.a = a;
-		this.b = b;
-		this.c = c;
+		this.content = content;
 		this.isCorrect = isCorrect;
-		this.questionID = questionID;
+	}
+	
+	public boolean isCorrect() {
+		return isCorrect;
 	}
 
 	@Override
@@ -22,7 +21,7 @@ public class Answer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + questionID;
+		result = prime * result;
 		return result;
 	}
 
@@ -37,16 +36,12 @@ public class Answer {
 		Answer other = (Answer) obj;
 		if (id != other.id)
 			return false;
-		if (questionID != other.questionID)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Answer [id=" + id + ", a=" + a + ","
-				+ " b=" + b + ", c=" + c + ", isCorrect=" + 
-				isCorrect + ", questionID="+ questionID + "]";
+		return "Answer [id=" + id + ", content=" + content + ", isCorrect=" + isCorrect;
 	}
 	
 	

@@ -1,12 +1,16 @@
 package model;
 
+import java.util.UUID;
+
 public class User {
 
-	private int id;
+	private String id;
 	private String username;
 	private String password;
-	public User(int id, String username, String password) {
-		this.id = id;
+	public User(String username, String password) {
+		UUID uniqueID = UUID.randomUUID();
+		
+		this.id = uniqueID.toString();
 		this.username = username;
 		this.password = password;
 	}
@@ -14,7 +18,7 @@ public class User {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
