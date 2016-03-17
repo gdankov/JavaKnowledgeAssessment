@@ -3,18 +3,31 @@ package model;
 public class Answer {
 
 	private int id;
-	private String a, b, c;
+	private String data;
 	private boolean isCorrect;
 	private int questionID;
 	
-	public Answer(int id, String a, String b, String c, 
-			      boolean isCorrect, int questionID) {
+	public Answer(int id, String a, boolean isCorrect, int questionID) {
 		this.id = id;
-		this.a = a;
-		this.b = b;
-		this.c = c;
+		this.data = a;
 		this.isCorrect = isCorrect;
 		this.questionID = questionID;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public boolean isCorrect() {
+		return isCorrect;
+	}
+
+	public int getQuestionID() {
+		return questionID;
 	}
 
 	@Override
@@ -44,8 +57,8 @@ public class Answer {
 
 	@Override
 	public String toString() {
-		return "Answer [id=" + id + ", a=" + a + ","
-				+ " b=" + b + ", c=" + c + ", isCorrect=" + 
+		return "Answer [id=" + id + ", data=" + data + ","
+				+ ", isCorrect=" + 
 				isCorrect + ", questionID="+ questionID + "]";
 	}
 	

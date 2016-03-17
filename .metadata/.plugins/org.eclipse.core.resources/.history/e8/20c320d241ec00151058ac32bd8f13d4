@@ -1,0 +1,24 @@
+package database;
+
+import java.util.List;
+
+import model.Answer;
+import model.Question;
+
+public class QuestionAnswer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private Question question;
+	private List<Answer> listOfAnswers;
+	
+	public QuestionAnswer(Question question, List<Answer> listOfAnswers) {
+		this.question = question;
+		this.listOfAnswers = listOfAnswers;
+	}
+	
+	
+}

@@ -1,0 +1,62 @@
+package database;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Question;
+
+public class ReadFromDatabase {
+ 
+	public static void main(String[] args){
+	List<Question> listOfQuestions=new ArrayList<>();
+	listOfQuestions.add(new Question(1, "question 1", "Easy", "OOP"));
+	listOfQuestions.add(new Question(2, "question 2", "Easy", "OOP"));
+	listOfQuestions.add(new Question(3, "question 3", "Easy", "OOP"));
+	listOfQuestions.add(new Question(4, "question 4", "Easy", "Core"));
+	listOfQuestions.add(new Question(5, "question 5", "Easy", "Core"));
+	listOfQuestions.add(new Question(6, "question 6", "Easy", "Core"));
+	listOfQuestions.add(new Question(7, "question 7", "Easy", "Data Structures"));
+	listOfQuestions.add(new Question(8, "question 8", "Easy", "Data Structures"));
+	listOfQuestions.add(new Question(9, "question 9", "Easy", "Data Structures"));
+	listOfQuestions.add(new Question(10, "question 10", "Easy", "Algorithms"));
+	listOfQuestions.add(new Question(11, "question 11", "Easy", "Advanced"));
+	listOfQuestions.add(new Question(12, "question 12", "Easy", "Advanced"));
+	listOfQuestions.add(new Question(13, "question 13", "Easy", "Enterprise"));
+	listOfQuestions.add(new Question(14, "question 14", "Easy", "Enterprise"));
+	listOfQuestions.add(new Question(15, "question 15", "Easy", "Enterprise"));
+	listOfQuestions.add(new Question(16, "question 16", "Easy", "OOP"));
+	listOfQuestions.add(new Question(17, "question 17", "Easy", "OOP"));
+	listOfQuestions.add(new Question(18, "question 18", "Easy", "OOP"));
+	listOfQuestions.add(new Question(19, "question 19", "Easy", "OOP"));
+	listOfQuestions.add(new Question(20, "question 20", "Easy", "OOP"));
+	listOfQuestions.add(new Question(21, "question 21", "Easy", "OOP"));
+	listOfQuestions.add(new Question(22, "question 22", "Easy", "OOP"));
+	listOfQuestions.add(new Question(23, "question 23", "Easy", "OOP"));
+	listOfQuestions.add(new Question(24, "question 24", "Easy", "OOP"));
+	listOfQuestions.add(new Question(25, "question 25", "Easy", "OOP"));
+	listOfQuestions.add(new Question(26, "question 26", "Easy", "OOP"));
+	listOfQuestions.add(new Question(27, "question 27", "Easy", "OOP"));
+	listOfQuestions.add(new Question(28, "question 28", "Easy", "OOP"));
+	listOfQuestions.add(new Question(29, "question 29", "Easy", "OOP"));
+	listOfQuestions.add(new Question(30, "question 30", "Easy", "OOP"));
+	listOfQuestions.add(new Question(31, "question 31", "Easy", "OOP"));
+	listOfQuestions.add(new Question(32, "question 32", "Easy", "OOP"));
+	listOfQuestions.add(new Question(33, "question 33", "Easy", "OOP"));
+	listOfQuestions.add(new Question(34, "question 34", "Easy", "OOP"));
+	listOfQuestions.add(new Question(35, "question 35", "Easy", "OOP"));
+	listOfQuestions.add(new Question(36, "question 36", "Easy", "OOP"));
+	listOfQuestions.add(new Question(37, "question 37", "Easy", "OOP"));
+	listOfQuestions.add(new Question(38, "question 38", "Easy", "OOP"));
+	listOfQuestions.add(new Question(39, "question 39", "Easy", "OOP"));
+	listOfQuestions.add(new Question(40, "question 40", "Easy", "OOP"));
+	listOfQuestions.add(new Question(41, "question 41", "Easy", "OOP"));
+	listOfQuestions.add(new Question(42, "question 42", "Easy", "OOP"));
+	listOfQuestions.add(new Question(43, "question 43", "Easy", "OOP"));
+	listOfQuestions.add(new Question(44, "question 44", "Easy", "OOP"));
+	listOfQuestions.add(new Question(45, "question 45", "Easy", "OOP"));
+
+	}
+
+}
+
+

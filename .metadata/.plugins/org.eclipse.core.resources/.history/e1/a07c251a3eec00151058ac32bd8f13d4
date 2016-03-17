@@ -1,0 +1,53 @@
+package model;
+
+public class Answer {
+
+	private int id;
+	private String a, b, c;
+	private boolean isCorrect;
+	private int questionID;
+	
+	public Answer(int id, String a, String b, String c, 
+			      boolean isCorrect, int questionID) {
+		this.id = id;
+		this.a = a;
+		this.b = b;
+		this.c = c;
+		this.isCorrect = isCorrect;
+		this.questionID = questionID;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + questionID;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Answer other = (Answer) obj;
+		if (id != other.id)
+			return false;
+		if (questionID != other.questionID)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Answer [id=" + id + ", a=" + a + ","
+				+ " b=" + b + ", c=" + c + ", isCorrect=" + 
+				isCorrect + ", questionID="+ questionID + "]";
+	}
+	
+	
+}
