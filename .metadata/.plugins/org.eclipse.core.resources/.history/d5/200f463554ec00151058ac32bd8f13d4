@@ -32,7 +32,7 @@ public class UserSession {
 		
 		
 	}
-	/*
+	
 	public List<QuestionAnswer> setUpLevel(int level) {
 		List<QuestionAnswer> questionsAndAnswers = new ArrayList<>();
 		for (String topic : topics) {
@@ -40,19 +40,19 @@ public class UserSession {
 		}
 		return questionsAndAnswers;
 	}
-	*/
+	
 	public List<QuestionAnswer> setUpLevel1(String level) {
 		List<Question> questions=base.loadQuestions(level);
 		List<QuestionAnswer> questionsAndAnswers = new ArrayList<>();
 		for (String topic : topics) {
-			questionsAndAnswers.addAll(base.getListOfQuestions(topic));
+			questionsAndAnswers.add(base.getListOfQuestions(topic));
 		}
 		return questionsAndAnswers;
 	}
 	
-	private List<QuestionAnswer> chooseRandomQuestions(List<QuestionAnswer> questions, int questionsPerTopic) {
+	private List<QuestionAnswers> chooseRandomQuestions(List<QuestionAnswers> questions, int questionsPerTopic) {
 		
-		List<QuestionAnswer> randQuestions = new ArrayList<>();
+		List<QuestionAnswers> randQuestions = new ArrayList<>();
 		
 		Random rand = new Random();
 		for (int i = 0; i < questionsPerTopic; i++) {
@@ -64,21 +64,21 @@ public class UserSession {
 		return randQuestions;
 	}
 
-	private List<QuestionAnswer> getQuestions(String topic, int level, int questionsPerTopic) {
+	private List<QuestionAnswers> getQuestions(String topic, int level, int questionsPerTopic) {
 		QuestionDAO questionDao = new QuestionDAO();
 		
-		List<QuestionAnswer> questions = questionDao.getAllQuestions(topic, level);
-		List<QuestionAnswer> randQuestions = chooseRandomQuestions(questions, questionsPerTopic);
+		List<QuestionAnswers> questions = questionDao.getAllQuestions(topic, level);
+		List<QuestionAnswers> randQuestions = chooseRandomQuestions(questions, questionsPerTopic);
 		return randQuestions;
 	}
 	
 	
 	
-	public boolean evaluateResult(List<Integer> results, List<QuestionAnswer> questions, int level) {
+	public boolean evaluateResult(List<Integer> results, List<QuestionAnswers> questions, int level) {
 		int currentLevelScore = 0;
 		
 		int resultCounter = 0;
-		for (QuestionAnswer question : questions) {
+		for (QuestionAnswers question : questions) {
 			int answered = results.get(resultCounter);
 			
 			if(question.getAnswers().get(answered).isCorrect()) {

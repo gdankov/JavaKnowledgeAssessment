@@ -45,7 +45,7 @@ public class UserSession {
 		List<Question> questions=base.loadQuestions(level);
 		List<QuestionAnswer> questionsAndAnswers = new ArrayList<>();
 		for (String topic : topics) {
-			questionsAndAnswers.addAll(base.getListOfQuestions(topic));
+			questionsAndAnswers.add(base.getListOfQuestions(topic));
 		}
 		return questionsAndAnswers;
 	}

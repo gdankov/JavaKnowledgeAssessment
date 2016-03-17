@@ -16,7 +16,6 @@ public class ReadFromDatabase {
 	private List<Question> listOfQuestions;
 	private List<Answer> listOfAnswers;
 	
-	//get all question from topic 
 	public  List <QuestionAnswer> getListOfQuestions(String topic){
 		for(Question q: listOfQuestions){
 			if(q.getTopic().equals(topic)){
@@ -37,7 +36,7 @@ public class ReadFromDatabase {
 		return qa;
 	}
 	
-	// later from database - spec level
+	// later from database
 	public List<Question> loadQuestions(String level){
 		listOfQuestions.add(new Question(1, "question 1", "Easy", "OOP"));
 		listOfQuestions.add(new Question(2, "question 2", "Easy", "OOP"));

@@ -3,7 +3,7 @@ package database;
 import java.util.List;
 
 import model.Question;
-import model.QuestionAnswer;
+import model.QuestionAnswers;
 
 public class QuestionDAO {
 
@@ -13,7 +13,7 @@ public class QuestionDAO {
 		return null;
 	}
 	
-	public List<QuestionAnswer> getAllQuestions(String topic, int level) {
+	public List<QuestionAnswers> getAllQuestions(String topic, int level) {
 		
 		return null;
 	}

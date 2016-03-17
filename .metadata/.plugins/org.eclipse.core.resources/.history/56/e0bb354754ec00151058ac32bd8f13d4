@@ -26,7 +26,7 @@ public class QuestionAnswer {
 		return question;
 	}
 
-	public List<Answer> getAnswers() {
+	public List<Answer> getListOfAnswers() {
 		return listOfAnswers;
 	}
 

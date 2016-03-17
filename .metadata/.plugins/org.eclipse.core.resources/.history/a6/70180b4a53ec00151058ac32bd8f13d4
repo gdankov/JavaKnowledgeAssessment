@@ -10,35 +10,30 @@ import model.QuestionAnswer;
 public class ReadFromDatabase {
 	
 	//not sure if its here 
-	private List <QuestionAnswer> used=new ArrayList<>();	
+	//private List <QuestionAnswer> used=new ArrayList<>();
+	
 	private QuestionAnswer qAns;
+
+	
 	
 	private List<Question> listOfQuestions;
 	private List<Answer> listOfAnswers;
 	
-	//get all question from topic 
-	public  List <QuestionAnswer> getListOfQuestions(String topic){
-		for(Question q: listOfQuestions){
-			if(q.getTopic().equals(topic)){
-				used.add(createQuestionAnswer(q));
-			}
-		}		
-		return used;		
-	}
 	
 	//create QuestionAnswer object 
 	public QuestionAnswer createQuestionAnswer(Question q){	
 		QuestionAnswer qa=new QuestionAnswer(q);
 		for(Answer ans: listOfAnswers){
 			if(q.getQuestionID()==ans.getQuestionID()){
-				qa.getAnswers().add(ans);
+				qa.getListOfAnswers().add(ans);
 			}
 		}
 		return qa;
 	}
 	
-	// later from database - spec level
-	public List<Question> loadQuestions(String level){
+	// later from database
+	public void loadQuestions(){
+		listOfQuestions=new ArrayList<>();
 		listOfQuestions.add(new Question(1, "question 1", "Easy", "OOP"));
 		listOfQuestions.add(new Question(2, "question 2", "Easy", "OOP"));
 		listOfQuestions.add(new Question(3, "question 3", "Easy", "OOP"));
@@ -86,7 +81,6 @@ public class ReadFromDatabase {
 		listOfQuestions.add(new Question(43, "question 43", "Hard", "Enterprise"));
 		listOfQuestions.add(new Question(44, "question 44", "Hard", "Enterprise"));
 		listOfQuestions.add(new Question(45, "question 45", "Hard", "Enterprise"));*/
-		return listOfQuestions;
 	}
 	
 	public void loadAnswers(){
