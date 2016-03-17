@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Question {
 
 	private int questionID;
@@ -12,6 +14,7 @@ public class Question {
 		content=cont;
 		this.level=level;
 		this.topic=topic;
+		
 	}
 
 	public int getQuestionID() {
