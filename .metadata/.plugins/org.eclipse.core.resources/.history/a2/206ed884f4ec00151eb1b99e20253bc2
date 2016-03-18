@@ -38,10 +38,10 @@ public class DatabaseConnector {
 	        listOfQuestions.add(qa2);
 	        
 	        Answer answer7 = new Answer(7, "Java Virtual Machine is an abstract machine which provides "
-	        		+ "the runtime environment in which java bytecode can be executed.", true, 0);
+	        		+ "the runtime environment in which java bytecode can be executed.", false, 0);
 	        Answer answer8 = new Answer(8, "Java Virtual Machine is an abstract machine which provides "
 	        		+ "the runtime environment in which classes can be executed.", false, 0);
-	        Answer answer9 = new Answer(9, "Java Virtual Machine is an IDE.", false, 0);
+	        Answer answer9 = new Answer(9, "Java Virtual Machine is an IDE.", true, 0);
 	        
 
 	        List<Answer> answers3 = new ArrayList<>();
@@ -53,17 +53,14 @@ public class DatabaseConnector {
 	        
 	        listOfQuestions.add(qa3);
 	        
-	        Answer answer10 = new Answer(7, "JDBC is an API for communicating to relational database.", true, 0);
-	        Answer answer11 = new Answer(8, " JDBC is a database.", false, 0);
-	        Answer answer12 = new Answer(9, "JDBC is a design pattern.", false, 0);
 	        
-
+	        
 	        List<Answer> answers4 = new ArrayList<>();
-	        answers4.add(answer10);
-	        answers4.add(answer11);
-	        answers4.add(answer12);
+	        answers4.add(answer7);
+	        answers4.add(answer8);
+	        answers4.add(answer9);
 	        
-	        QuestionAnswer qa4 = new QuestionAnswer(new Question(7, "What is JDBC?", "Easy", "Database"), answers4);
+	        QuestionAnswer qa4 = new QuestionAnswer(new Question(4, "question 4", "Easy", "Core"), answers4);
 	        
 	        listOfQuestions.add(qa4);
 	       

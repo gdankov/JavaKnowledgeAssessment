@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="model.Answer"/>
+<fullyQualifiedTypeName name="database.QuestionAnswer"/>
+<fullyQualifiedTypeName name="model.Question"/>
+<fullyQualifiedTypeName name="database.ReadFromDatabase"/>
+<fullyQualifiedTypeName name="model.QuestionAnswer"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+</qualifiedTypeNameHistroy>
