@@ -1,31 +1,28 @@
 package com.ui;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import model.QuestionAnswer;
 import questionscontroller.UserSession;
 
 public class Session {
-	private ArrayList<Question> questions;
+	private List<QuestionAnswer> questions;
 	private ArrayList<Integer> results = new ArrayList<>(); // results from the
 															// input
 	private int switchCounter = 0;// counter for when to loadNewQuestions
 	private int questionCounter = 1;// number of questions asked
 	private int answersCounter = 0;
-	private int numberOfQuesRequested = 4; // how many questions per
-											// level-hardcoded
-	// private QuestionFactory factory = new QuestionFactory();// TEST
-	private UserSession userSession = new UserSession();
-
-	/*
-	 * public Session() {// TEST questions = factory.getArray(); }
-	 */
+	private int numberOfQuesRequested;
+	private int currentLevel = 1;
+	private UserSession userSession = new UserSession(1);
 
 	public Session() {
 		loadNewQuestions();
 	}
 
-	public Question getQuestion() {
-		Question question;
+	public QuestionAnswer getQuestion() {
+		QuestionAnswer question;
 		question = questions.get(switchCounter);
 		switchCounter++;
 		questionCounter++;
@@ -33,11 +30,13 @@ public class Session {
 	}
 
 	public void loadNewQuestions() {
-		questions = userSession.ret();
+		questions = userSession.setUpLevel(currentLevel);
+		numberOfQuesRequested = questions.size();
 	}
 
 	public void checkWhenToPass() {
-		if (answersCounter == 3) {// на колко отговора да се праща
+		if (answersCounter == numberOfQuesRequested) {// на колко отговора да се
+														// праща
 			System.out.println("Here it should be:" + results.size());
 			passResults(results);
 			loadNewQuestions();
@@ -47,7 +46,9 @@ public class Session {
 	}
 
 	public void passResults(ArrayList<Integer> results) {
-		userSession.showReceivedAnswers(results);
+		if (userSession.evaluateResult(results, questions, 1)) {
+			// currentLevel++;
+		}
 
 	}
 
@@ -58,11 +59,12 @@ public class Session {
 	}
 
 	public String getFinalResult() {
-		return "finalResult";
+		return userSession.finalScore() + "";
 	}
 
 	public boolean checkStatus() {
-		if (questionCounter == 7) {// 4=колкото са ни въпросите+1
+		if (questionCounter == 7) {// 4=колкото са ни
+									// въпросите+1
 			return false;
 		} else {
 			return true;
