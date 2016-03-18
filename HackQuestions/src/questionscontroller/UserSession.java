@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import database.DatabaseConnector;
 import model.QuestionAnswer;
@@ -77,12 +76,16 @@ public class UserSession {
 		System.out.println("question.size" + questions.size() + j);
 		j++;
 
-		Random rand = new Random();
-		for (int i = 0; i < questionsPerTopic; i++) {
-			int randIndex = rand.nextInt(questions.size());
-			randQuestions.add(questions.get(randIndex));
-			questions.remove(randIndex);
+		for (int i = 0; i < questions.size(); i++) {
+			randQuestions.add(questions.get(i));
 		}
+
+		/*
+		 * Random rand = new Random(); for (int i = 0; i < questionsPerTopic;
+		 * i++) { int randIndex = rand.nextInt(questions.size());
+		 * randQuestions.add(questions.get(randIndex));
+		 * questions.remove(randIndex); }
+		 */
 
 		return randQuestions;
 	}
@@ -94,7 +97,7 @@ public class UserSession {
 		for (QuestionAnswer question : questions) {
 			int answered = results.get(resultCounter);
 
-			if (question.getAnswers().get(answered).isCorrect()) {
+			if (answered != -1 && question.getAnswers().get(answered).isCorrect()) {
 				incrementTopicScoreboard(question.getQuestionContent().getTopic());
 				++currentLevelScore;
 			}

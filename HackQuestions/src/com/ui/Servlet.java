@@ -41,18 +41,17 @@ public class Servlet extends HttpServlet {
 		if ("a".equals(answer)) {
 			System.out.println("a is checked");
 			session.addResult(0);
-		}
-		if ("b".equals(answer)) {
+		} else if ("b".equals(answer)) {
 			System.out.println("b is checked");
 			session.addResult(1);
-		}
-		if ("c".equals(answer)) {
+		} else if ("c".equals(answer)) {
 			System.out.println("c is checked");
 			session.addResult(2);
-		}
-		if ("d".equals(answer)) {
+		} else if ("d".equals(answer)) {
 			System.out.println("d is checked");
 			session.addResult(3);
+		} else {
+			session.addResult(-1);
 		}
 		if (request.getParameter("next") != null) {
 
@@ -89,7 +88,6 @@ public class Servlet extends HttpServlet {
 		request.setAttribute("ans1", a);
 		request.setAttribute("ans2", b);
 		request.setAttribute("ans3", c);
-		request.setAttribute("ans4", "sth");
 
 		dispatcher.forward(request, response);
 	}

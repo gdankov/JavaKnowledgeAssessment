@@ -19,7 +19,6 @@
     	<input type="radio" name="sel" value="a"> ${ans1} <br>
   		<input type="radio" name="sel" value="b">${ans2} <br>
   		<input type="radio" name="sel" value="c"> ${ans3}<br>
-  		<input type="radio" name="sel" value="d"> ${ans4}<br>
   		<div class="btn-group" role="group">
   		<button name="next" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
   		</div>

@@ -47,7 +47,7 @@ public class Session {
 
 	public void passResults(ArrayList<Integer> results) {
 		if (userSession.evaluateResult(results, questions, 1)) {
-			// currentLevel++;
+			currentLevel++;
 		}
 
 	}

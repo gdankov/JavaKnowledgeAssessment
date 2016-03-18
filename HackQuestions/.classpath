@@ -14,5 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="/home/toni/Downloads/apache-tomcat-8.0.32/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/home/toni/Downloads/postgresql-9.3-1103.jdbc3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
