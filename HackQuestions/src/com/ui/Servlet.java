@@ -41,22 +41,22 @@ public class Servlet extends HttpServlet {
 		if ("a".equals(answer)) {
 			System.out.println("a is checked");
 			session.addResult(0);
-		} else if ("b".equals(answer)) {
+		}
+		if ("b".equals(answer)) {
 			System.out.println("b is checked");
 			session.addResult(1);
-		} else if ("c".equals(answer)) {
+		}
+		if ("c".equals(answer)) {
 			System.out.println("c is checked");
 			session.addResult(2);
-		} else if ("d".equals(answer)) {
+		}
+		if ("d".equals(answer)) {
 			System.out.println("d is checked");
 			session.addResult(3);
-		} else {
-			session.addResult(-1);
 		}
 		if (request.getParameter("next") != null) {
 
-			session.checkWhenToPass();
-			if (session.checkStatus()) {
+			if (session.checkWhenToPass()) {
 				setQuestion(request, response);
 			} else {
 				forwardToResult(request, response);

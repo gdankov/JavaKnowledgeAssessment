@@ -19,15 +19,14 @@
 	<label for="Level">Your level is:</label><br>
 	<label for="Level">Beginner</label></br>
     <label for="Level">Recommendations:</label></br>
-    <label for="Level"><u>Your Basic Java knowledge is not good.</u> </label> </br>
-    <label for="Level">Your should read: “Programming: Introduction to Programming Using JAVA”,  David J. Eck</label></br>	
-	<label for="Level"><u>Your OOP knowledge is not good.</u></label> </br>
-	<label for="Level">Your should read:An Introduction to Object-Oriented Programming With Java , C Wu </label></br>	
-  	<label for="Level"><u>Your Database knowledge is not good.</u></label> </br>
-  	<label for="Level">Your should read: Introduction to Databases : autor Nenad Jukic</label> </br>	
-  	<label for="Level"><u>Your Algorithm knowledge is not good.</u></label> </br> 
-  	<label for="Level">Your should read:Data Structures and Algorithms Made Easy in Java: Data Structure and Algorithmic Puzzles, Narasimha Karumanchi </label></br>	
-  	
+    <label for="Level"><u>Your Basic Java knowledge is below satisfactory.</u> </label> </br>
+    <label for="Level">Your should read: "Programming: Introduction to Programming Using JAVA",  by David J. Eck</label></br>	
+	<label for="Level"><u>Your OOP knowledge is below satisfactory..</u></label> </br>
+	<label for="Level">Your should read:An Introduction to Object-Oriented Programming With Java , by C Wu </label></br>	
+  	<label for="Level"><u>Your Database knowledge is below satisfactory.</u></label> </br>
+  	<label for="Level">Your should read: Introduction to Databases, by Nenad Jukic</label> </br>	
+  	<label for="Level"><u>Your Algorithm knowledge below satisfactory.</u></label> </br> 
+  	<label for="Level">Your should read:Data Structures and Algorithms Made Easy in Java: Data Structure and Algorithmic Puzzles, by Narasimha Karumanchi </label></br>	
   		</div>
   </div>
 	</div>

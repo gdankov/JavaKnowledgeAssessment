@@ -1,11 +1,9 @@
 package questionscontroller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import database.DatabaseConnector;
 import model.QuestionAnswer;
@@ -24,7 +22,7 @@ public class UserSession {
 
 	// get topics from database eventually
 
-	private String[] topics = { "Core Java", "Database", "OOP", "Data Structures"};
+	private String[] topics = { "Core", "OOP", "DS" };
 	private Map<String, Integer> topicsScoreboard;
 
 	public UserSession(int questionsPerTopic) {
@@ -78,22 +76,18 @@ public class UserSession {
 		System.out.println("question.size" + questions.size() + j);
 		j++;
 
-		//for (int i = 0; i < questions.size(); i++) {
-			//randQuestions.add(questions.get(i));
-		//}
+		for (int i = 0; i < questions.size(); i++) {
+			randQuestions.add(questions.get(i));
+		}
 
-	/*Random rand = new Random();
-	for(int i = 0;i<questionsPerTopic;i++)
+		/*
+		 * Random rand = new Random(); for (int i = 0; i < questionsPerTopic;
+		 * i++) { int randIndex = rand.nextInt(questions.size());
+		 * randQuestions.add(questions.get(randIndex));
+		 * questions.remove(randIndex); }
+		 */
 
-	{
-		int randIndex = rand.nextInt(questions.size());
-		randQuestions.add(questions.get(randIndex));
-		questions.remove(randIndex);
-	}*/
-		Collections.shuffle(questions);
-
-	return questions.subList(0, questionsPerTopic);
-
+		return randQuestions;
 	}
 
 	public boolean evaluateResult(List<Integer> results, List<QuestionAnswer> questions, int level) {

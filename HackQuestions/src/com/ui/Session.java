@@ -7,13 +7,14 @@ import model.QuestionAnswer;
 import questionscontroller.UserSession;
 
 public class Session {
-	private List<QuestionAnswer> questions;
+	public List<QuestionAnswer> questions;
 	private ArrayList<Integer> results = new ArrayList<>(); // results from the
 															// input
 	private int switchCounter = 0;// counter for when to loadNewQuestions
 	private int questionCounter = 1;// number of questions asked
 	private int answersCounter = 0;
 	private int numberOfQuesRequested;
+	private int remaining;
 	private int currentLevel = 1;
 	private UserSession userSession = new UserSession(1);
 
@@ -26,30 +27,38 @@ public class Session {
 		question = questions.get(switchCounter);
 		switchCounter++;
 		questionCounter++;
+		remaining--;
 		return question;
 	}
 
 	public void loadNewQuestions() {
 		questions = userSession.setUpLevel(currentLevel);
 		numberOfQuesRequested = questions.size();
+		remaining=questions.size();
 	}
 
-	public void checkWhenToPass() {
-		if (answersCounter == numberOfQuesRequested) {// на колко отговора да се
-														// праща
-			System.out.println("Here it should be:" + results.size());
-			passResults(results);
-			loadNewQuestions();
-			answersCounter = 0;
-			switchCounter = 0;
+	public boolean checkWhenToPass() {
+		if(remaining == 0) {
+			if (passResults(results) && checkStatus()) {// на колко отговора да се
+				// праща
+				System.out.println("Here it should be:" + results.size());
+				loadNewQuestions();
+				answersCounter = 0;
+				switchCounter = 0;
+				return true;
+			}
+			return false;
 		}
+		return true;
 	}
 
-	public void passResults(ArrayList<Integer> results) {
-		if (userSession.evaluateResult(results, questions, 1)) {
+	public boolean passResults(ArrayList<Integer> results) {
+		if (userSession.evaluateResult(results, questions, currentLevel)) {
 			currentLevel++;
+			results.clear();
+			return true;
 		}
-
+		return false;
 	}
 
 	public void addResult(int incomingResult) {
@@ -61,15 +70,16 @@ public class Session {
 	public String getFinalResult() {
 		return userSession.finalScore() + "";
 	}
+	
 
 	public boolean checkStatus() {
-		if (questionCounter == 7) {// 4=колкото са ни
-									// въпросите+1
+		if (currentLevel == 3) {// 4=колкото са ни
+			// въпросите+1
 			return false;
 		} else {
 			return true;
 		}
-
 	}
+	
 
 }
